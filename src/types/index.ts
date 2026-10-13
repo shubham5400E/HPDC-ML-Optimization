@@ -12,15 +12,12 @@ export interface ComponentData {
   cavities: number;
   mass: number;
   coolingConfig: string;
-  dimensions: {
-    length: number;
-    width: number;
-    height: number;
-  };
-  volume: number;
-  projectedArea: number;
-  wallThickness: number;
+  extractedFeatures: Record<string, any>;
   uploadDate: string;
+  mesh?: {
+    vertices: number[][];
+    faces: number[][];
+  };
 }
 
 export interface RecommendationParameters {
@@ -34,6 +31,14 @@ export interface RecommendationParameters {
   velocityTransitionPoint: number; // mm
   fillingTime: number; // ms
   intensificationTiming: number; // ms
+  coolingTime?: number; // s
+  vacuumPressure?: number; // bar
+  recommendedAlloy?: string;
+  clampingForceEst?: number; // tonnes
+  gateVelocityEst?: number; // m/s
+  modelSource?: string;
+  changeoverNote?: string;
+  [key: string]: any;
 }
 
 export interface ParameterConstraint {
